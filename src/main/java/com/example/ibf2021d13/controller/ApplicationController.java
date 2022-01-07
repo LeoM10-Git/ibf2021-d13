@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -28,7 +29,7 @@ public class ApplicationController {
         System.out.println(path);
         File file = new File(path);
         Files.createFile(Paths.get(path));
-        FileWriter writer = new FileWriter(file);
+        FileWriter writer = new FileWriter(file, StandardCharsets.UTF_8);
         writer.write(user.toString());
         writer.flush();
         writer.close();
@@ -47,7 +48,8 @@ public class ApplicationController {
 
         if (file.exists()){
             StringBuilder user = new StringBuilder();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
+            BufferedReader reader = new BufferedReader
+                    (new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
             String line;
             while ((line = reader.readLine()) != null){
                 user.append(line).append("\n");

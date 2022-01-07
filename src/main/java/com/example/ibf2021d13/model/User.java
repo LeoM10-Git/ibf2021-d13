@@ -35,8 +35,8 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "name= " + name + '\n' +
-                "email= " + email + '\n' +
-                "phoneNumber= " + phoneNumber + '\n';
+        return "name: " + name + '\n' +
+                "email: " + email + '\n' +
+                "phoneNumber: " + phoneNumber + '\n';
     }
 }
